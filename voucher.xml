@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="voucher.xsl"?>
+<gvl:Wallet xsi:schemaLocation="urn:ietf:params:xml:ns:vts-lang wallet.xsd" xmlns:gvl="urn:ietf:params:xml:ns:vts-lang" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<gvl:username>eoryde</gvl:username>
+	<gvl:password>lcr</gvl:password>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>oviarog</gvl:name>
+			<gvl:account>1KzcqsmqcBXGoWzAJY4MXHAYc3MozUKaUa</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="2.65" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Crear un partido político</gvl:name>
+			<gvl:quantity>1</gvl:quantity>
+			<gvl:rate>2.65</gvl:rate>
+			<gvl:price>2.65</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-09T09:54:59" end="2013-12-09T09:54:59"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo aceptan la moneda HORAS BdT</gvl:Conditions>
+		<gvl:registered>false</gvl:registered>
+		<gvl:sent>false</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>doyagl</gvl:name>
+			<gvl:account>1EicQKF7vrF5HRHiqhJYybW3QfG9pUSgBT</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="9.600000000000001" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Profesionales que recolectan fondos </gvl:name>
+			<gvl:quantity>3</gvl:quantity>
+			<gvl:rate>3.2</gvl:rate>
+			<gvl:price>9.600000000000001</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-09T09:55:32" end="2013-12-09T09:55:32"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo aceptan la moneda HORAS BdT</gvl:Conditions>
+		<gvl:registered>true</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo
+		</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>oviarog</gvl:name>
+			<gvl:account>1KzcqsmqcBXGoWzAJY4MXHAYc3MozUKaUa</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="4.48" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Planificar, organizar o dirigir un evento </gvl:name>
+			<gvl:quantity>1</gvl:quantity>
+			<gvl:rate>1.98</gvl:rate>
+			<gvl:price>1.98</gvl:price>
+		</gvl:Merchandise>
+		<gvl:Merchandise>
+			<gvl:name>Dirigir conferencias</gvl:name>
+			<gvl:quantity>1</gvl:quantity>
+			<gvl:rate>2.50</gvl:rate>
+			<gvl:price>2.5</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-09T09:55:32" end="2013-12-09T09:55:32"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo
+			aceptan la moneda HORAS BdT
+		</gvl:Conditions>
+		<gvl:registered>true</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo
+		</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>doyagl</gvl:name>
+			<gvl:account>1EicQKF7vrF5HRHiqhJYybW3QfG9pUSgBT</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="17.520000000000003" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Profesionales que recolectan fondos </gvl:name>
+			<gvl:quantity>3</gvl:quantity>
+			<gvl:rate>3.2</gvl:rate>
+			<gvl:price>9.600000000000001</gvl:price>
+		</gvl:Merchandise>
+		<gvl:Merchandise>
+			<gvl:name>Planificar, organizar o dirigir un evento </gvl:name>
+			<gvl:quantity>4</gvl:quantity>
+			<gvl:rate>1.98</gvl:rate>
+			<gvl:price>7.92</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-09T09:55:32" end="2013-12-09T09:55:32"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo
+			aceptan la moneda HORAS BdT
+		</gvl:Conditions>
+		<gvl:registered>true</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo
+		</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>doyagl</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="4.48" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Planificar, organizar o dirigir un evento </gvl:name>
+			<gvl:quantity>1</gvl:quantity>
+			<gvl:rate>1.98</gvl:rate>
+			<gvl:price>1.98</gvl:price>
+		</gvl:Merchandise>
+		<gvl:Merchandise>
+			<gvl:name>Dirigir conferencias</gvl:name>
+			<gvl:quantity>1</gvl:quantity>
+			<gvl:rate>2.50</gvl:rate>
+			<gvl:price>2.5</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-09T09:55:32" end="2013-12-09T09:55:32"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo
+			aceptan la moneda HORAS BdT
+		</gvl:Conditions>
+		<gvl:registered>true</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo
+		</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>doyagl</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="24.880000000000002" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Diseñadores y analystas de computadoras</gvl:name>
+			<gvl:quantity>2</gvl:quantity>
+			<gvl:rate>3.68</gvl:rate>
+			<gvl:price>7.36</gvl:price>
+		</gvl:Merchandise>
+		<gvl:Merchandise>
+			<gvl:name>Profesionales que recolectan fondos </gvl:name>
+			<gvl:quantity>3</gvl:quantity>
+			<gvl:rate>3.2</gvl:rate>
+			<gvl:price>9.600000000000001</gvl:price>
+		</gvl:Merchandise>
+		<gvl:Merchandise>
+			<gvl:name>Planificar, organizar o dirigir un evento </gvl:name>
+			<gvl:quantity>4</gvl:quantity>
+			<gvl:rate>1.98</gvl:rate>
+			<gvl:price>7.92</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-09T09:55:32" end="2013-12-09T09:55:32"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo
+			aceptan la moneda HORAS BdT
+		</gvl:Conditions>
+		<gvl:registered>true</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo
+		</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>doyagl</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="24.880000000000002" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Diseñadores y analystas de computadoras</gvl:name>
+			<gvl:quantity>2</gvl:quantity>
+			<gvl:rate>3.68</gvl:rate>
+			<gvl:price>7.36</gvl:price>
+		</gvl:Merchandise>
+		<gvl:Merchandise>
+			<gvl:name>Profesionales que recolectan fondos </gvl:name>
+			<gvl:quantity>3</gvl:quantity>
+			<gvl:rate>3.2</gvl:rate>
+			<gvl:price>9.600000000000001</gvl:price>
+		</gvl:Merchandise>
+		<gvl:Merchandise>
+			<gvl:name>Planificar, organizar o dirigir un evento </gvl:name>
+			<gvl:quantity>4</gvl:quantity>
+			<gvl:rate>1.98</gvl:rate>
+			<gvl:price>7.92</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-10T09:55:32" end="2013-12-10T09:55:32"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo
+			aceptan la moneda HORAS BdT
+		</gvl:Conditions>
+		<gvl:registered>false</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>oviarog</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="3.2" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Business professionals not elsewhere classified</gvl:name>
+			<gvl:quantity>1</gvl:quantity>
+			<gvl:rate>3.2</gvl:rate>
+			<gvl:price>3.2</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-09T10:27:26" end="2013-12-09T10:27:26"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo aceptan la moneda HORAS BdT</gvl:Conditions>
+		<gvl:registered>false</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="19.8" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Contribuir a establecer un programa o una reunión para resolver un problema que afecta a su comunidad </gvl:name>
+			<gvl:quantity>10</gvl:quantity>
+			<gvl:rate>1.98</gvl:rate>
+			<gvl:price>19.8</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-10T19:04:52" end="2013-12-10T19:04:52"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo aceptan la moneda HORAS BdT</gvl:Conditions>
+		<gvl:registered>true</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>oviarog</gvl:name>
+			<gvl:account>1KzcqsmqcBXGoWzAJY4MXHAYc3MozUKaUa</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="2.5" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Dirigir conferencias</gvl:name>
+			<gvl:quantity>1</gvl:quantity>
+			<gvl:rate>2.50</gvl:rate>
+			<gvl:price>2.5</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-10T19:04:52" end="2013-12-10T19:04:52"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo aceptan la moneda HORAS BdT</gvl:Conditions>
+		<gvl:registered>true</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+	<gvl:Voucher>
+		<gvl:Title>Bono por HORAS</gvl:Title>
+		<gvl:Description>Bono por HORAS de servicio en Banco de Tiempo</gvl:Description>
+		<gvl:Provider>
+			<gvl:name>BdT Portillo</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Provider>
+		<gvl:Issuer>
+			<gvl:name>eoryde</gvl:name>
+			<gvl:account>1LRu7zAuCymJMxLe7W6fTVtJY9y9aLjq9w</gvl:account>
+		</gvl:Issuer>
+		<gvl:Holder>
+			<gvl:name>oviarog</gvl:name>
+			<gvl:account>1KzcqsmqcBXGoWzAJY4MXHAYc3MozUKaUa</gvl:account>
+		</gvl:Holder>
+		<gvl:Collector>
+			<gvl:name>tilloBdT</gvl:name>
+			<gvl:account>19atEnDRz63j8fRUQeLfQHnAVbLBRy33S8</gvl:account>
+		</gvl:Collector>
+		<gvl:Value type="exchange" spend="1">
+			<gvl:Fixed currency="HORAS BdT" amount="3.2" decimalPower="0"/>
+		</gvl:Value>
+		<gvl:Merchandise>
+			<gvl:name>Participar en un comité de planificación o de gestión</gvl:name>
+			<gvl:quantity>1</gvl:quantity>
+			<gvl:rate>3.2</gvl:rate>
+			<gvl:price>3.2</gvl:price>
+		</gvl:Merchandise>
+		<gvl:ValidPeriod start="2012-12-10T19:04:52" end="2013-12-10T19:04:52"/>
+		<gvl:Conditions>Todos los socios del Banco de Tiempo BdT Portillo aceptan la moneda HORAS BdT</gvl:Conditions>
+		<gvl:registered>true</gvl:registered>
+		<gvl:sent>true</gvl:sent>
+	</gvl:Voucher>
+</gvl:Wallet>

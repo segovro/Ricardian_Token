@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+     
+<schema elementFormDefault="qualified" targetNamespace="urn:ietf:params:xml:ns:vts-lang" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gvl="urn:ietf:params:xml:ns:vts-lang">
+	<element name="Wallet">
+		<complexType>
+			<sequence>
+				<sequence maxOccurs="1" minOccurs="0">
+					<element name="username" type="string"/>
+					<element name="password" type="string"/>
+				</sequence>
+				<element maxOccurs="unbounded" minOccurs="1" name="Voucher" type="gvl:VoucherType"/>
+			</sequence>
+		</complexType>
+	</element>
+	<complexType name="VoucherType">
+		<sequence>
+			<element ref="gvl:Title"/>
+			<element minOccurs="0" ref="gvl:Description"/>
+			<element ref="gvl:Provider"/>
+			<element minOccurs="0" ref="gvl:Issuer"/>
+			<element minOccurs="0" ref="gvl:Holder"/>
+			<element minOccurs="0" ref="gvl:Collector"/>
+			<element ref="gvl:Value"/>
+			<element maxOccurs="unbounded" minOccurs="0" ref="gvl:Merchandise"/>
+			<element minOccurs="0" ref="gvl:ValidPeriod"/>
+			<element minOccurs="0" ref="gvl:Conditions"/>
+			<element default="false" name="registered" type="boolean"/>
+			<element default="false" name="sent" type="boolean"/>
+			<element maxOccurs="unbounded" minOccurs="0" name="key" type="string"/>
+		</sequence>
+	</complexType>
+	<element name="Title" type="string"/>
+	<element name="Description" type="string"/>
+	<element name="Provider" type="gvl:RoleType"/>
+	<element name="Issuer" type="gvl:RoleType"/>
+	<element name="Holder" type="gvl:RoleType"/>
+	<element name="Collector" type="gvl:RoleType"/>
+	<complexType mixed="true" name="RoleType">
+		<sequence>
+			<element name="name" type="string"/>
+			<element name="account" type="string"/>
+		</sequence>
+	</complexType>
+	<element name="Value" type="gvl:ValueType"/>
+	<complexType name="ValueType">
+		<sequence minOccurs="0">
+			<element name="Fixed" type="gvl:FixedValueType"/>
+		</sequence>
+		<attribute name="type" type="gvl:ValueProcessType" use="required"/>
+		<attribute default="1" name="spend" type="nonNegativeInteger"/>
+	</complexType>
+	<simpleType name="ValueProcessType">
+		<restriction base="string">
+			<enumeration value="exchange"/>
+			<enumeration value="discount"/>
+			<enumeration value="monetary"/>
+		</restriction>
+	</simpleType>
+	<complexType name="RatioValueType">
+		<attribute name="percentage" use="required">
+			<simpleType>
+				<restriction base="float">
+					<maxInclusive value="100"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<complexType name="FixedValueType">
+		<attribute name="currency" type="string" use="required"/>
+		<attribute name="amount" type="float" use="required"/>
+		<attribute default="0" name="decimalPower" type="short"/>
+	</complexType>
+	<element name="Merchandise" type="gvl:MerchandiseType"/>
+	<complexType mixed="true" name="MerchandiseType">
+		<sequence>
+			<element name="name" type="string"/>
+			<element name="quantity" type="decimal"/>
+			<element name="rate" type="decimal"/>
+			<element name="price" type="decimal"/>
+		</sequence>
+	</complexType>
+	<element name="ValidPeriod" type="gvl:ValidPeriodType"/>
+	<complexType name="ValidPeriodType">
+		<attribute name="start" type="dateTime"/>
+		<attribute name="end" type="dateTime"/>
+	</complexType>
+	<element name="Conditions" type="string"/>
+</schema>
