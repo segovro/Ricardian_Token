@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Wallet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="ricardianContract.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script type="text/javascript" src="web3.js"></script>
+<script type="text/javascript" src="bignumber.js"></script>
+<script type="text/javascript" src="ricardianToken.js"></script>
+<script type="text/javascript">
+	
+</script>
+<style>
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+}
+</style>
+</head>
+<body>
+	<div class="container bg-3 text-center">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="well text-left">
+					<div class="media">
+						<div class="media-left">
+							<img src="./images/leuro.png" + myImage class="media-object img-circle"
+								style="width: 100px">
+						</div>
+						<div class="media-body">
+							<p id="voucherTokenName">
+								Voucher: <strong>							
+							</strong>
+							</p>
+							<p><a href="https://sites.google.com/site/desperadostheory/currencies/xml-sharing/pimeco-cc-contract">View the voucher contract</a>
+							<p>
+								My Balance: <span class="badge">voucherTokenSymbol</span>
+							</p>
+							
+						</div>
+					</div></div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4>
+								<span class="glyphicon glyphicon-send"></span> Payment
+							</h4>
+						</div>
+						<div class="panel-body">
+							<p id="display"></p>
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="payee">
+										Account:</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="payee"
+											placeholder="Enter payee account">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="amount">Amount:</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control" id="amount"
+											placeholder="Enter amount">
+									</div>
+								</div>
+
+							</form>
+						</div>
+						<div class="panel-footer">
+							<div class="btn-group">
+								<button type="submit" class="btn btn-success"
+									onClick="transfer();">
+									<span class="glyphicon glyphicon-send"></span> Make Payment
+								</button>
+							</div>
+						</div>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

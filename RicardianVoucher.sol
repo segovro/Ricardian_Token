@@ -33,18 +33,27 @@ contract ricardianVoucher {
 	
 	/* Public variables of the voucherToken */	
     string public standard = 'Token 0.1';
-    uint256 public totalSupply;
+    uint256 public initialSupply;
     string public voucherTokenName;
     uint8 public decimals;
     string public voucherTokenSymbol;
     address public voucherTokenLogoBzz;  		// swarm hash of a voucher or voucherToken icon or logo
+    
+    // The example is designed assuming a continued supply by the producers along a long period of time, as it is usual for most of the distribution industry or manufacturing industry
+    // Seasonal products, like agricultural, may require yearly tokens, each producer making a single promise at the beginning
+    // Occasional tokens, like short time promotion bonds, have a short validity period, each producer making a single promise at the beginning
+    
     uint256 public validity_start; 				// start date of the contract. Validity period of the voucher to redeem merchandises
     uint256 public validity_end; 				// end date of the contract. Provides restrictions on the validity period of the voucher
     uint8 public thisMonth = uint8((now - validity_start) / (4 * 1 weeks));
     
-    /* Initializes voucherToken with initial supply voucherTokens to the creator of the contract */
+    /* Initializes voucherToken with initial supply of Tokens to the creator of the contract */
+    // Except for special purposes, initialSupply should be set to zero. The tokens should be created with the producers promises and destroyed at redemption
+    // One exception is to let the Association spend tokens for collective purposes. It rests value to the tokens. Its a tax to the producers
+    // Another exception is to let the Association sell tokens (for Ξ ETH) for collective purposes. It rests value to the tokens. Its a tax to the producers
+    
     function ricardianVoucher(
-        uint256 _totalSupply,
+        uint256 _initialSupply,
         string _voucherTokenName,
         uint8 _decimals,
         string _voucherTokenSymbol,
@@ -53,8 +62,8 @@ contract ricardianVoucher {
         uint256 _validity_end_inWeeks 					// in how many weeks the period ends
         ) {
     	owner = msg.sender;
-        balances[owner] = uint256(totalSupply);       	// Give the creator all initial supply
-        totalSupply = _totalSupply;                        	// Update total supply
+        balances[owner] = uint256(initialSupply);       	// Give the creator all initial supply
+        initialSupply = _initialSupply;                        	// Update total supply
         voucherTokenName = _voucherTokenName;                                  // Set the name for display purposes
         voucherTokenSymbol = _voucherTokenSymbol;                              // Set the symbol for display purposes
         decimals = _decimals; 								// Amount of decimals for display purposes
@@ -92,28 +101,6 @@ contract ricardianVoucher {
     function writeConditions (uint8 _number, string _condition) onlyOwner beforeCirculation  {
     	conditions[_number] = _condition;
     }
-    
-    /* ASSOCIATION MANAGEMENT */    
-    
-    function declareAssociation (
-        	string _name, 			// the name you are normally known by in the street
-            string _shortname, 		// short name is displayed by trading software, 8 chars max
-            string _longname, 		// full legal name
-            string _postaddress, 		// formal address for snail-mail notices
-            string _country, 		// two letter ISO code that indicates the jurisdiction
-            string _registration, 	// legal registration code of the provider (legal person or legal entity)
-            address _Bzz 			// swarm hash of the signer human readable registry document
-           ) onlyOwner beforeCirculation {
-    		provider[owner].member=true;
-        	provider[owner].name=_name; 			
-            provider[owner].shortname=_shortname; 		
-            provider[owner].longname=_longname; 		
-            provider[owner].postaddress=_postaddress; 		
-            provider[owner].country=_country; 		
-            provider[owner].registration=_registration; 	
-            provider[owner].Bzz=_Bzz;
-            ApplicationProvider(owner, _name, now);
-        }
     
     /* PROVIDERS MANAGEMENT */
     
@@ -184,7 +171,8 @@ contract ricardianVoucher {
 			int256 _promise=int256(_amount);
 			providerPromise[_provider].monthPromise[_month]=_promise;
 			ApprovePromise (_provider, _month, _promise);
-			// If the promise is approved the provider is allowed to withdraw now the corresponding quentity
+			// If the promise is approved the provider is allowed to withdraw now the corresponding quantity
+			
 			approve(_provider, _amount);
 	}
 	
@@ -192,6 +180,29 @@ contract ricardianVoucher {
 		providerPromise[_provider].monthPromise[_toMonth]=+providerPromise[_provider].monthPromise[_fromMonth];
 		ApprovePromise (_provider, _month, _promise);
 	}
+	
+	/* ASSOCIATION MANAGEMENT */    
+	// The association is treated as another provider, at the address of the owner
+    
+    function declareAssociation (
+        	string _name, 			// the name you are normally known by in the street
+            string _shortname, 		// short name is displayed by trading software, 8 chars max
+            string _longname, 		// full legal name
+            string _postaddress, 		// formal address for snail-mail notices
+            string _country, 		// two letter ISO code that indicates the jurisdiction
+            string _registration, 	// legal registration code of the provider (legal person or legal entity)
+            address _Bzz 			// swarm hash of the signer human readable registry document
+           ) onlyOwner beforeCirculation {
+    		provider[owner].member=true;
+        	provider[owner].name=_name; 			
+            provider[owner].shortname=_shortname; 		
+            provider[owner].longname=_longname; 		
+            provider[owner].postaddress=_postaddress; 		
+            provider[owner].country=_country; 		
+            provider[owner].registration=_registration; 	
+            provider[owner].Bzz=_Bzz;
+            ApplicationProvider(owner, _name, now);
+        }
     
     
     /* VOUCHER CICULATION */  
@@ -246,7 +257,7 @@ contract ricardianVoucher {
 	}
 	
 	function getVoucher () constant returns (
-	        uint256 _totalSupply,
+	        uint256 _initialSupply,
 	        string _voucherTokenName,
 	        uint8 _decimals,
 	        string _voucherTokenSymbol,
@@ -254,7 +265,7 @@ contract ricardianVoucher {
 	        uint8 _validity_start, 				
 	        uint8 _validity_ends 					
 	        ) {
-		return (totalSupply,
+		return (initialSupply,
 	        voucherTokenName,
 	        decimals,
 	        voucherTokenSymbol,
