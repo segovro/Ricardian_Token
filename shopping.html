@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Wallet</title>
+<title>Shopping</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -59,9 +59,9 @@
 						<nav class="navbar navbar-default">
 							<div class="container-fluid">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="wallet.html"><span
+									<li><a href="wallet.html"><span
 											class="glyphicon glyphicon-send"></span> Transfer </a></li>
-									<li><a href="shopping.html"><span
+									<li class="active"><a href="shopping.html"><span
 											class="glyphicon glyphicon-shopping-cart"></span> Shopping </a></li>
 									<li><a href="scan.html">Scan QR <span
 											class="glyphicon glyphicon-qrcode"></span></a></li>
@@ -75,7 +75,7 @@
 									Account: </label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="payee"
-										placeholder="Enter payee account"></span>
+										placeholder="Enter shopping account">
 								</div>
 							</div>
 							<div class="form-group">
@@ -85,19 +85,23 @@
 										placeholder="Enter amount">
 								</div>
 							</div>
-
+							<div class="form-group">
+								<label class="col-sm-2" for="products">Products:</label>
+								<textarea rows="3" cols="50" id="products"
+									placeholder="Product; Price; Units; Total"></textarea>
+							</div>
 						</form>
 					</div>
 					<div class="panel-footer">
 						<div class="btn-group">
 							<button type="submit" class="btn btn-success"
 								onClick="transfer();">
-								<span class="glyphicon glyphicon-send"></span> Make Transfer
+								<span class="glyphicon glyphicon-shopping-cart"></span> Shop
 							</button>
 						</div>
 					</div>
 				</div>
-				<h4>Transactions</h4>
+				<h4>Shoppings</h4>
 			</div>
 		</div>
 	</div>

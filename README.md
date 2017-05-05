@@ -1,19 +1,6 @@
 # Ethereum Ricardian-Voucher Token
 Ethereum **ERC:20** and **legally valid token** that is a promise of a real world goods, products or merchandises
 
-# Smart contracts
-A contract is a mutually agreeable arrangement of rules among mutually suspicious parties so they may cooperate with limited risks to each other's mischief. It is a game both are willing to play because both expect to win. A conventional contract is passive paper interpreted at great expense by lawyers and courts. A smart contract is written in program code, in which the logic of the program's execution enforce the terms of the contract. Smart contracts reduce costs by orders of magnitude, leading to a more cooperative world. *ERights.org, home of E, the secure distributed pure-object platform for writing Smart Contracts: Patterns of Cooperation without Vulnerability https://www.cypherpunks.to/erights/*
-
-Smart contracts also known as a smart property are computer protocols that facilitate, verify, or enforce the negotiation or performance of a contract, or that make a contractual clause unnecessary. Smart contracts often emulate the logic of contractual clauses. Proponents of smart contracts claim that many kinds of contractual clauses may thus be made partially or fully self-executing, self-enforcing, or both. Smart contracts aim to provide security superior to traditional contract law and to reduce other transaction costs associated with contracting.  
-
-A smart contract is a computerized transaction protocol that executes the terms of a contract. The general objectives are to satisfy common contractual conditions (such as payment terms, liens, confidentiality, and even enforcement), minimize exceptions both malicious and accidental, and minimize the need for trusted intermediaries. Related economic goals include lowering fraud loss, arbitrations and enforcement costs, and other transaction costs. *The Idea of Smart Contracts, 1997 by Nick Szabo, https://goo.gl/1CKyOj*  
-
-Smart contracts go beyond the vending machine in proposing to embed contracts in all sorts of property that is valuable and controlled by digital means. Smart contracts reference that property in a dynamic, often proactively enforced form, and provide much better observation and verification where proactive measures must fall short.
-
-A Smart Contract has to be: 
-* **Smart** for computers: enforced by an executable script. Turing complete. 
-* A **Contract** in the eyes of humans (lawyers). Semantics is human. A valid legal document.
-
 # Self-credit currencies issued by producers of goods or services
 * Anyone who offers goods and services for sale in the market is qualified to issue currency. *THE END OF MONEY AND THE FUTURE OF CIVILIZATION, by Thomas H. Greco, Jr., 2009* 
 * Buyers and sellers should be free to use any payment medium that is mutually agreeable to them, including the issuance and acceptance of their own currencies.
@@ -30,7 +17,20 @@ Product vouchers are legal contracts with a specific data model *INTERNET-DRAFT 
 
 Most of the ethereum ERC20: Token standard (ERC: Token standard 20) tokens rely only on promises just stated at a website. *ERC20: Token standard https://github.com/ethereum/EIPs/issues/20* 
 
-In the end, their value relies only on the trust expressed in the market, and the investment made at the ICO, but have no legal validity. A Ricardian contract based token would bring to reality Thomas Greco, Bernard Leathaer and Paul Grigon dreams that every producer of a good is entitled to issue money as a promise about its production.  
+In the end, their value relies only on the trust expressed in the market, and the investment made at the ICO, but have no legal validity. A Ricardian contract based token would bring to reality Thomas Greco, Bernard Leathaer and Paul Grigon dreams that every producer of a good is entitled to issue money as a promise about its production. 
+
+# Smart contracts
+A contract is a mutually agreeable arrangement of rules among mutually suspicious parties so they may cooperate with limited risks to each other's mischief. It is a game both are willing to play because both expect to win. A conventional contract is passive paper interpreted at great expense by lawyers and courts. A smart contract is written in program code, in which the logic of the program's execution enforce the terms of the contract. Smart contracts reduce costs by orders of magnitude, leading to a more cooperative world. *ERights.org, home of E, the secure distributed pure-object platform for writing Smart Contracts: Patterns of Cooperation without Vulnerability https://www.cypherpunks.to/erights/*
+
+Smart contracts also known as a smart property are computer protocols that facilitate, verify, or enforce the negotiation or performance of a contract, or that make a contractual clause unnecessary. Smart contracts often emulate the logic of contractual clauses. Proponents of smart contracts claim that many kinds of contractual clauses may thus be made partially or fully self-executing, self-enforcing, or both. Smart contracts aim to provide security superior to traditional contract law and to reduce other transaction costs associated with contracting.  
+
+A smart contract is a computerized transaction protocol that executes the terms of a contract. The general objectives are to satisfy common contractual conditions (such as payment terms, liens, confidentiality, and even enforcement), minimize exceptions both malicious and accidental, and minimize the need for trusted intermediaries. Related economic goals include lowering fraud loss, arbitrations and enforcement costs, and other transaction costs. *The Idea of Smart Contracts, 1997 by Nick Szabo, https://goo.gl/1CKyOj*  
+
+Smart contracts go beyond the vending machine in proposing to embed contracts in all sorts of property that is valuable and controlled by digital means. Smart contracts reference that property in a dynamic, often proactively enforced form, and provide much better observation and verification where proactive measures must fall short.
+
+A Smart Contract has to be: 
+* **Smart** for computers: enforced by an executable script. Turing complete. 
+* A **Contract** in the eyes of humans (lawyers). Semantics is human. A valid legal document.
 
 # Ricardian contract
 A Ricardian contract is a document which is legible to both a court of law and to a software application. Its purpose is to provide digital trading systems of various kinds the solidity of legally binding claims on property, so that you and your partners can concentrate on the business opportunity. *The Ricardian Contract http://iang.org/ricardian/*
@@ -94,3 +94,10 @@ string[] **conditions**; 	// Provides any other applicable restrictions
 * Sales consist in transferring tokens for value **s**, selling the price, from the buyer to the association wallet, redeeming the voucher. Deduct **s** to the promises **p** of the producer for that month **m**
 * Any month **m**, the association adds the net remaining promise **p** (positive or negative) of each producer at any previous month **m-x** to the promise of month **m**
 * At approving a new promise of a producer for a future month **m**, the association may consider decrease the requested promise in view of a prexisting promise or a carry over promise
+
+# Github
+[https://github.com/segovro/Ricardian_Token](https://github.com/segovro/Ricardian_Token)
+
+![alt](http://plastenka.hu/wp-content/uploads/2012/02/by-nc-nd.eu_.png)
+
+[Attribution-NonCommercial-NoDerivatives 4.0 International CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)
