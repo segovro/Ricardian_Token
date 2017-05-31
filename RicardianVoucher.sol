@@ -1,4 +1,4 @@
-pragma solidity ^0.4.8;
+pragma solidity ^0.4.11;
 
 contract ricardianVoucher {
 	// Generic Voucher Language https://tools.ietf.org/html/draft-ietf-trade-voucher-lang-07
@@ -6,209 +6,83 @@ contract ricardianVoucher {
 	
     // Owner of this smart contract
     address public owner;
-    
-    // Functions with this modifier can only be executed by the owner
-    modifier onlyOwner() {
-        if (msg.sender != owner) {
-           throw;
-        }
-       _;
-    }
-    
-    // Functions with this modifier can only be executed when voucherToken is in circulation
-    modifier inCirculation {
-        if ((now < validity_start) || (now < validity_end))
-            throw;
-        _;
-    } 
-    
-    // Functions with this modifier can only be executed when voucherToken is in circulation
-    modifier beforeCirculation {
-        if (now > validity_start)
-            throw;
-        _;
-    } 
   
     /* voucherToken MANAGEMENT */ 
 	
-	/* Public variables of the voucherToken */	
+    /* Public variables of the token */
     string public standard = 'Token 0.1';
-    uint256 public initialSupply;
-    string public voucherTokenName;
+    string public name;
+    string public symbol;
     uint8 public decimals;
-    string public voucherTokenSymbol;
-    address public voucherTokenLogoBzz;  		// swarm hash of a voucher or voucherToken icon or logo
+    uint public totalSupply;
+    string public legalContract;
+    string public logo;  				        // swarm hash of a voucher or voucherToken icon or logo
+    uint public validity_start; 				// start date of the contract. Validity period of the voucher to redeem merchandises
+    uint public validity_end; 					// end date of the contract. Provides restrictions on the validity period of the voucher
     
-    // The example is designed assuming a continued supply by the producers along a long period of time, as it is usual for most of the distribution industry or manufacturing industry
-    // Seasonal products, like agricultural, may require yearly tokens, each producer making a single promise at the beginning
-    // Occasional tokens, like short time promotion bonds, have a short validity period, each producer making a single promise at the beginning
-    
-    uint256 public validity_start; 				// start date of the contract. Validity period of the voucher to redeem merchandises
-    uint256 public validity_end; 				// end date of the contract. Provides restrictions on the validity period of the voucher
-    uint8 public thisMonth = uint8((now - validity_start) / (4 * 1 weeks));
-    
-    /* Initializes voucherToken with initial supply of Tokens to the creator of the contract */
-    // Except for special purposes, initialSupply should be set to zero. The tokens should be created with the producers promises and destroyed at redemption
-    // One exception is to let the Association spend tokens for collective purposes. It rests value to the tokens. Its a tax to the producers
-    // Another exception is to let the Association sell tokens (for Ξ ETH) for collective purposes. It rests value to the tokens. Its a tax to the producers
-    
+	function get () constant returns (uint _totalSupply, string _name, string _symbol, uint8 _decimals, string _logo, uint _validity_start, uint _validity_end) {
+		return (totalSupply, name, symbol, decimals, logo, validity_start, validity_end);
+	}
+
+    /* Initializes voucherToken with initial supply voucherTokens to the creator of the contract */
     function ricardianVoucher(
-        uint256 _initialSupply,
-        string _voucherTokenName,
+        uint _totalSupply,
+        string _name,
         uint8 _decimals,
-        string _voucherTokenSymbol,
-        address _voucherTokenLogoBzz,
-        uint256 _validity_start_inWeeks, 					// in how many weeks the period starts
-        uint256 _validity_end_inWeeks 					// in how many weeks the period ends
+        string _symbol,
+        string _legalContract,
+        string _logo,
+        uint8 _validity_start_inDays, 					
+        uint8 _validity_end_inDays 					    
         ) {
     	owner = msg.sender;
-        balances[owner] = uint256(initialSupply);       	// Give the creator all initial supply
-        initialSupply = _initialSupply;                        	// Update total supply
-        voucherTokenName = _voucherTokenName;                                  // Set the name for display purposes
-        voucherTokenSymbol = _voucherTokenSymbol;                              // Set the symbol for display purposes
-        decimals = _decimals; 								// Amount of decimals for display purposes
-        voucherTokenLogoBzz = _voucherTokenLogoBzz;
-        validity_start = now + (_validity_start_inWeeks * 1 weeks);
-        validity_end = now + (_validity_end_inWeeks * 1 weeks);         
+        balances[owner] = uint(totalSupply);       	    // Give the creator all initial voucherTokens
+        totalSupply = _totalSupply;                     // Update total supply
+        name = _name;                                   // Set the name for display purposes
+        symbol = _symbol;                               // Set the symbol for display purposes
+        decimals = _decimals; 							// Amount of decimals for display purposes
+        legalContract = _legalContract;
+        logo = _logo;
+        validity_start = now + _validity_start_inDays * 1 days;
+        validity_end = now + _validity_end_inDays * 1 days; 
     }
     
-    // Balances for each account, member or not member
-    mapping(address => uint256) balances; 
+    // Balances for each account
+    mapping(address => uint) balances; 
     
-    /* CONTRACT MANAGEMENT */
+    // Owner of account approves the transfer of an amount to another account
+    mapping(address => mapping (address => uint256)) allowed;
     
-    address public contractBzz; 				// swarm hash of the signer human readable contract
-    
-    function linkContract (address _contractBzz) onlyOwner beforeCirculation { 
-    	contractBzz = _contractBzz;
-    }
-    
+    /* CONTRACT DETAILS */
+
     string[] merchandises; 						// Provides restrictions on the object to be claimed. Domain-specific meaning of the voucher
     string[] definitions; 						// Includes terms and definitions that generally desire to be defined in a contract
     string[] conditions; 						// Provides any other applicable restrictions
     
-     
     /* write contract terms */
     // only the owner can write the contract terms
     // contract terms can only be written before circulation 
     
-    function writeMerchandises (uint8 _number, string _merchandise) onlyOwner beforeCirculation {
+    function writeMerchandises (uint8 _number, string _merchandise) {
+        if (msg.sender == owner) {
     	merchandises[_number] = _merchandise;
-    }
-    function writeDefinitions (uint8 _number, string _definition) onlyOwner beforeCirculation {
-    	definitions[_number] = _definition;
-    }
-    function writeConditions (uint8 _number, string _condition) onlyOwner beforeCirculation  {
-    	conditions[_number] = _condition;
-    }
-    
-    /* PROVIDERS MANAGEMENT */
-    
-    // Providers
-    struct providers {
-    	bool member;
-    	string name; 			// the name you are normally known by in the street
-        string shortname; 		// short name is displayed by trading software, 8 chars max
-        string longname; 		// full legal name
-        string postaddress; 			// formal address for snail-mail notices
-        string country; 			// two letter ISO code that indicates the jurisdiction
-        string registration; 	// legal registration code of the provider (legal person or legal entity)
-        address Bzz; 			// swarm hash of the signer human readable registry document
-        uint256 allowed;
-    }
-   
-    mapping(address => providers) provider;
-    
-    function applyProvider (
-    	string _name, 			// the name you are normally known by in the street
-        string _shortname, 		// short name is displayed by trading software, 8 chars max
-        string _longname, 		// full legal name
-        string _address, 		// formal address for snail-mail notices
-        string _country, 		// two letter ISO code that indicates the jurisdiction
-        string _registration, 	// legal registration code of the provider (legal person or legal entity)
-        address _Bzz 			// swarm hash of the signer human readable registry document
-       ) {
-    	provider[msg.sender].name=_name; 			
-        provider[msg.sender].shortname=_shortname; 		
-        provider[msg.sender].longname=_longname; 		
-        provider[msg.sender].postaddress=_address; 		
-        provider[msg.sender].country=_country; 		
-        provider[msg.sender].registration=_registration; 	
-        provider[msg.sender].Bzz=_Bzz;
-        ApplicationProvider(msg.sender, _name, now);
-    }
-    
-    function approveProvider (address _providerAddress) onlyOwner {
-    	provider[_providerAddress].member=true;
-    	ApproveProvider (_providerAddress, provider[_providerAddress].name, now);
-    }
-    
-    function deleteProvider (address _providerAddress) {
-    	if (_providerAddress==msg.sender || msg.sender==owner) {
-    	provider[_providerAddress].member=false;
-    	DeleteProvider (_providerAddress, provider[_providerAddress].name, now);
-    	}
-    }
-    
-    /* PROMISES MANAGEMENT */
-    
-
-    struct promises {
-    	    int256[] monthPromise;
-    }
-    
-    mapping(address => promises) providerPromise;
-    
-    function addPromise (uint256 _month, uint256 _amount) {
-    	if (provider[msg.sender].member==true){
-    		int256 _promise=int256(_amount);
-    		providerPromise[msg.sender].monthPromise[_month]=+_promise;
-    		AddPromise (msg.sender, _month, _promise);
-    	}
-    }
-
-	function approvePromise (address _provider, uint256 _month, uint256 _amount) onlyOwner {
-			int256 _promise=int256(_amount);
-			providerPromise[_provider].monthPromise[_month]=_promise;
-			ApprovePromise (_provider, _month, _promise);
-			// If the promise is approved the provider is allowed to withdraw now the corresponding quantity
-			
-			approve(_provider, _amount);
-	}
-	
-	function carryOverPromise (address _provider, uint256 _fromMonth, uint256 _toMonth) onlyOwner {
-		providerPromise[_provider].monthPromise[_toMonth]=+providerPromise[_provider].monthPromise[_fromMonth];
-		ApprovePromise (_provider, _month, _promise);
-	}
-	
-	/* ASSOCIATION MANAGEMENT */    
-	// The association is treated as another provider, at the address of the owner
-    
-    function declareAssociation (
-        	string _name, 			// the name you are normally known by in the street
-            string _shortname, 		// short name is displayed by trading software, 8 chars max
-            string _longname, 		// full legal name
-            string _postaddress, 		// formal address for snail-mail notices
-            string _country, 		// two letter ISO code that indicates the jurisdiction
-            string _registration, 	// legal registration code of the provider (legal person or legal entity)
-            address _Bzz 			// swarm hash of the signer human readable registry document
-           ) onlyOwner beforeCirculation {
-    		provider[owner].member=true;
-        	provider[owner].name=_name; 			
-            provider[owner].shortname=_shortname; 		
-            provider[owner].longname=_longname; 		
-            provider[owner].postaddress=_postaddress; 		
-            provider[owner].country=_country; 		
-            provider[owner].registration=_registration; 	
-            provider[owner].Bzz=_Bzz;
-            ApplicationProvider(owner, _name, now);
         }
-    
-    
+    }
+    function writeDefinitions (uint8 _number, string _definition) {
+        if (msg.sender == owner) {
+    	definitions[_number] = _definition;
+        }
+    }
+    function writeConditions (uint8 _number, string _condition) {
+        if (msg.sender == owner) {
+    	conditions[_number] = _condition;
+        }
+    }
+       
     /* VOUCHER CICULATION */  
 
     /* Send voucherTokens */
-    function transfer(address _to, uint256 _amount) inCirculation {
+    function transfer(address _to, uint _amount) {
         if (balances[msg.sender] >= _amount && _amount > 0) {
             balances[msg.sender] -= _amount;
             balances[_to] += _amount;
@@ -218,7 +92,7 @@ contract ricardianVoucher {
 
     // Allow _spender to withdraw from your account, multiple times, up to the _amount amount.
     // If this function is called again it overwrites the current allowance with _amount.
-     function approve(address _spender, uint256 _amount) inCirculation {
+     function approve(address _spender, uint _amount) {
          allowed[msg.sender][_spender] = _amount;
          Approval(msg.sender, _spender, _amount);
     }
@@ -229,7 +103,7 @@ contract ricardianVoucher {
      // fees in sub-currencies; the command should fail unless the _from account has
      // deliberately authorized the sender of the message via some mechanism; we propose
      // these standardized APIs for approval:
-     function transferFrom(address _from, address _to, uint256 _amount) inCirculation {
+     function transferFrom(address _from, address _to, uint _amount) {
          //same as above. Replace this line with the following if you want to protect against wrapping uints.
          //if (balances[_from] >= _amount && allowed[_from][msg.sender] >= _amount && balances[_to] + _amount > balances[_to]) {
          if (balances[_from] >= _amount && allowed[_from][msg.sender] >= _amount && _amount > 0) {
@@ -239,95 +113,121 @@ contract ricardianVoucher {
              Transfer(_from, _to, _amount);
                       } 
      }
-
-       
+    
+    /* PROVIDERS MANAGEMENT */
+    
+    // Providers
+    struct providers {
+        bool member;
+    	string name; 			// the name you are normally known by in the street
+        string country; 		// two letter ISO code that indicates the jurisdiction
+        string registration; 	// legal registration code of the provider (legal person or legal entity)
+        string legal; 			// swarm hash of the signer human readable registry document
+        uint promise;
+        bool promiseApproved;
+        uint sales;
+    }
+    
+    mapping(address => providers) provider;
+    
+    address[] providerIndex;
+    
+    function applyAsProvider (string _name, string _country, string _registration, string _legal) {
+    	provider[msg.sender].name =_name; 
+        provider[msg.sender].country =_country; 		
+        provider[msg.sender].registration=_registration; 	
+        provider[msg.sender].legal=_legal;
+        ApplicationProvider(msg.sender, _name, now);
+    }
+    
+    function approveProvider (address _provider) {
+        if (msg.sender == owner && provider[msg.sender].member == false) {
+    	provider[_provider].member = true;
+    	providerIndex[providerIndex.length + 1] = _provider;
+    	provider[_provider].promiseApproved = false;
+    	ApproveProvider (_provider, provider[_provider].name, now);
+        }
+    }
+    
+    function makePromise (uint _promise) {
+        if (provider[msg.sender].member == true && provider[msg.sender].promiseApproved == false) {
+        provider[msg.sender].promise = _promise;
+        MakePromise (msg.sender, _promise, now);
+        }
+    }
+    
+    function approvePromise (address _provider) {
+        if (provider[_provider].member == true && provider[msg.sender].promiseApproved == false) {
+        provider[_provider].promiseApproved = true;
+        balances[_provider] += provider[msg.sender].promise;
+        totalSupply += provider[msg.sender].promise;
+        ApprovePromise (_provider, provider[_provider].promise, now);
+        }
+    }
+  
+ 
     /* SALES MANAGEMENT */
     
+    function redeem (address _provider, uint _value, string _billDescription) {
+        if (provider[_provider].member == true) {
+            if (balances[msg.sender] < _value) throw;   	
+            balances[msg.sender] -= _value;            	
+            provider[_provider].sales += _value;         	
+            totalSupply -= _value;
+            Redeem (msg.sender, _provider, _value, _billDescription, now);
+            }
+        }
+    
     /* GET INFORMATION */
-     
-    // What is this month with respect to the validity_start
-     
+    
     // What is the balance of a particular account?
-    function balanceOf(address _owner) constant returns (uint256 balance) {
+    function balanceOf(address _owner) constant returns (uint balance) {
         return balances[_owner];
     }
 
-	function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
+	function allowance(address _owner, address _spender) constant returns (uint remaining) {
 	    return allowed[_owner][_spender];
 	}
 	
-	function getVoucher () constant returns (
-	        uint256 _initialSupply,
-	        string _voucherTokenName,
-	        uint8 _decimals,
-	        string _voucherTokenSymbol,
-	        address _voucherTokenLogoBzz,
-	        uint8 _validity_start, 				
-	        uint8 _validity_ends 					
-	        ) {
-		return (initialSupply,
-	        voucherTokenName,
-	        decimals,
-	        voucherTokenSymbol,
-	        voucherTokenLogoBzz,
-	        validity_start, 				
-	        validity_ends);
-	}
-	
-	function getMerchandise (uint256 _number) constant returns (string _merchandise) {
-		return merchandises[_number];
-	}
-	
-	function getDefinition (uint256 _number) constant returns (string _definition) {
-		return defitions[_number];
-	}
-	
-	function getCondition (uint256 _number) constant returns (string _condition) {
-		return conditions[_number];
-	}
-	
-	function getProvider (address _provider) constant returns (string _name, 
-	        string _shortname,
-	        string _longname,
-	        string _address,
-	        string _country,
-	        string _registration,
-	        address _Bzz) {
-		return (
-		provider[_provider].name=_name,			
-        provider[_provider].shortname=_shortname,	
-        provider[_provider].longname=_longname, 		
-        provider[_provider].postaddress=_address,		
-        provider[_provider].country=_country, 		
-        provider[_provider].registration=_registration, 	
-        provider[_provider].Bzz=_Bzz
+    function getProviderData (address _provider) constant returns  (bool _member, string _name, string _country, string _registration, string _legal) {
+        return (provider[_provider].member,
+                provider[_provider].name,
+                provider[_provider].country,
+                provider[_provider].registration,
+                provider[_provider].legal
         );
-	}
+    }
     
+    function getProviderSales (address _provider) constant returns  (bool _member, string _name, uint _promise, bool _promiseApproved, uint _sales) {
+        return (provider[_provider].member,
+                provider[_provider].name,
+                provider[_provider].promise,
+                provider[_provider].promiseApproved,
+                provider[_provider].sales
+        );
+    }
     /* EVENTS */
 	
     /* This generates public events on the blockchain that will notify clients */
-	
-	//Triggered when a new provider applies
-	event ApplicationProvider (address indexed _from, string _name, uint256 _timestamp);
-	
-	//Triggered when a new provider is approved
-	event ApproveProvider (address indexed _from, string _name, uint256 _timestamp);
-	
-	//Triggered when a provider is deleted
-	event DeleteProvider (address indexed _from, string _name, uint256 _timestamp);	
     
     // Triggered when voucherTokens are transferred.
-    event Transfer(address indexed _from, address indexed _to, uint256 _value);
+    event Transfer(address indexed _from, address indexed _to, uint _value);
 
-     // Triggered whenever approve(address _spender, uint256 _value) is called.
-    event Approval(address indexed _owner, address indexed _spender, uint256 _value);
+     // Triggered whenever approve(address _spender, uint _value) is called.
+    event Approval(address indexed _owner, address indexed _spender, uint _value);
     
-    event AddPromise (address _provider, uint8 _month, uint256 _promise);
+    event ApplicationProvider (address indexed _from, string _name, uint _timestamp);
+	
+	event ApproveProvider (address _provider, string _name, uint _timestamp);
+	
+	event MakePromise (address indexed _provider, uint _promise, uint _timestamp);
+    
+    event ApprovePromise (address indexed _provider, uint _promise, uint _timestamp);
+    
+    event Redeem (address _customer, address _provider, uint _sale, string _billDescription, uint _timestamp);
     
     /* OVERALL */
     
-
     /* This unnamed function is called whenever someone tries to send ether to it */
     function () {
         throw;     // Prevents accidental sending of ether
